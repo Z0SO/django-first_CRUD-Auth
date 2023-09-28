@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/zoso/Documentos/Proyectos/django-CRUD-Auth/venv"
+VIRTUAL_ENV="/home/zoso/Documentos/Proyectos/django-first_CRUD-Auth/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
-# Create your views here.
+from django.contrib.auth import login
 
 
 def home(request):
@@ -29,9 +28,10 @@ def sign_up(request):
                 )
 
                 user.save()  # va a tratar de guardarlo en la BD
-                
-                return  redirect('tareas_view')
+                login(request, user)
 
+
+                return  redirect('tareas_view')
                 # redirecciona a tasks
             except:
                return render(
