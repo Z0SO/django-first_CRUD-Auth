@@ -26,5 +26,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('sign-up/', views.sign_up, name='sign-up'),
     # path('notes/', include('notes.urls'), name='notes'),
-    path('tasks/', views.tasks_view, name='tareas_view')
+    path('tasks/', views.tasks_view, name='tareas_view'),
+    path('log-out/', views.salir, name='log-out')
 ]

@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
+from django.db import IntegrityError
 
+                        
 def home(request):
     return render(request, 'home.html')
     
@@ -30,11 +33,13 @@ def sign_up(request):
                 user.save()  # va a tratar de guardarlo en la BD
                 login(request, user)
 
-
                 return  redirect('tareas_view')
                 # redirecciona a tasks
-            except:
-               return render(
+                
+            except IntegrityError: 
+                # Cuando haya un error de integridad (sign up de un usuario ya creado) va a ejecutar este except
+                
+                return render(
                    request, 'signup.html', 
                    {
                     'alert':'Error: usuario existente',
@@ -48,3 +53,10 @@ def sign_up(request):
 
 def tasks_view(request):
     return render(request, 'tasks.html')
+
+
+def salir(request):
+
+    logout(request)
+    
+    return redirect('home')
