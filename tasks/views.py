@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 
 from django.db import IntegrityError
 
@@ -17,7 +17,7 @@ def sign_up(request):
 
     if request.method == 'GET':
         print('Entra por get')
-        return render(request, 'signup.html', {'alert':'First time','form': UserCreationForm()})
+        return render(request, 'signup.html',{'alert':'First time','form': UserCreationForm()})
     else:
         print(request.POST)
         print('Recibiendo datos')
@@ -29,7 +29,8 @@ def sign_up(request):
                     username=request.POST['username'],
                     password=request.POST['password1'],
                 )
-
+                
+                print(user)
                 user.save()  # va a tratar de guardarlo en la BD
                 login(request, user)
 
@@ -60,3 +61,43 @@ def salir(request):
     logout(request)
     
     return redirect('home')
+
+
+def ingresar(request):
+
+    if request.method == 'POST':
+
+        print(request.POST)
+
+        # se procede a autenticar con el metodo authenticate
+        # esto hara que antes de hacer el metodo login primero se debe verificar en la db
+        
+        usr_nombre = request.POST['username']
+        usr_password = request.POST['password']
+
+        usuario_autenticado = authenticate(request, username= usr_nombre, password= usr_password)
+        print(usuario_autenticado)
+
+        
+        if usuario_autenticado == None:
+            return render(request, 'ingresar.html',
+                {
+                    'formulario': AuthenticationForm(),
+                    'alert': 'Error: Usuario o contraseña incorrectos'
+                }
+            )
+        else:
+            
+            login(request, usuario_autenticado)
+            return redirect('tareas_view')
+    else:
+        
+        # por este flujo retorna cuando es un get
+
+        return render(request, 'ingresar.html',
+            {
+                'formulario': AuthenticationForm()
+
+            }
+        )
+    

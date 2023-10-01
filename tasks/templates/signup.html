@@ -8,9 +8,11 @@
     <form action="{% url 'sign-up' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
+      
         <button>
             Enviar
         </button>
+    
     </form>
 
 {% endblock content %}

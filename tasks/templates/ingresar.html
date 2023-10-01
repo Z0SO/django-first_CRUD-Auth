@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<h2>Ingresar</h2>
+
+<form action="{% url 'ingresar' %}" method="post">
+    {% csrf_token %}
+    
+    {{ alert }}
+
+    {{ formulario.as_p }}
+   
+    <button>Enviar</button>
+
+</form>
+{% endblock content%}

@@ -10,16 +10,16 @@
     <nav>
         <ul>
             <li><a href="{% url 'home' %}">HOME</a></li>
-       
+            
+            
        
             <li><a href="{% url 'sign-up' %}">REGISTRARSE</a></li>
-       
-       
-            <li><a href="{% url 'tareas_view' %}">TAREAS</a></li>
-       
+            <li><a href="{% url 'ingresar' %}">INGRESAR</a></li>
+
             
             {% if user.is_authenticated %}
-                <li><a href="{% url 'log-out' %}">SALIR</a></li>
+            <li><a href="{% url 'log-out' %}">SALIR</a></li>
+            <li><a href="{% url 'tareas_view' %}">TAREAS</a></li>
             {% endif %}
        
        
