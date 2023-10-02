@@ -20,6 +20,7 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'log-out' %}">SALIR</a></li>
             <li><a href="{% url 'tareas_view' %}">TAREAS</a></li>
+            <li><a href="{% url 'task_create' %}">NUEVA TAREA</a></li>
             {% endif %}
        
        

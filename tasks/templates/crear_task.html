@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Nueva Tarea</h2>
+
+    <form action="{% url 'task_create' %}" method="post">
+        
+        {% csrf_token %}
+         
+        {{ form.as_p }}
+
+        <button>Crear Tarea</button>
+
+    </form>
+
+{% endblock content %}
