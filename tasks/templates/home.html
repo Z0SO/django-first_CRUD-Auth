@@ -5,7 +5,7 @@
     <h1>Home</h1>
     
     {% if user.is_authenticated %}
-        <p>Hola de nuevo</p>
+        <p>Hola {{ user }}</p>
     {% endif %}
 
 {% endblock content %}

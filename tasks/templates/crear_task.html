@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+    <h3>{{ alert }}</h3>
+
     <h2>Nueva Tarea</h2>
 
     <form action="{% url 'task_create' %}" method="post">

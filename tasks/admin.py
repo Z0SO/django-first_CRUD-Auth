@@ -5,10 +5,7 @@ from .models import Task
 
 
 class Task_Admin(admin.ModelAdmin):
-    readonly_fields = (
-        'fecha_creacion',
-
-    )
+    readonly_fields = ( 'fecha_creacion',   )
 
 
 admin.site.register(Task, Task_Admin)

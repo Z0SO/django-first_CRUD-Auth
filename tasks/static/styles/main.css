@@ -1,0 +1,40 @@
+body {
+  background-color: rgb(201, 199, 199);
+}
+
+.navbar_main {
+  background-color: #1d1d1d; /* Color de fondo */
+  border-radius: 8px;
+  padding: 10px; /* Espaciado interno */
+}
+
+/* Estilos para los elementos de la lista */
+.navbar_main ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Usar flexbox para los elementos de la lista */
+  justify-content: space-between;
+}
+
+/* Estilos para los elementos de la lista */
+.navbar_main li {
+  margin: 0px 20px; /* Espaciado horizontal entre elementos */
+}
+
+/* Estilos para los enlaces */
+.navbar_main a {
+  color: white; /* Color del texto */
+  text-decoration: none;
+  padding: 8px;
+}
+
+/* Estilos para los enlaces cuando se pasa el mouse por encima */
+.navbar_main a:hover {
+  background-color: #ddd; /* Color de fondo al pasar el mouse */
+  color: black; /* Cambia el color del texto al pasar el mouse */
+    box-shadow: 0px 0px 8px rgb(158, 158, 158);
+  border-radius: 8px;
+    padding: 10px;
+  transition: all 0.2s;
+}
