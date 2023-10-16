@@ -1,18 +1,35 @@
 {% extends 'base.html'%}
 
 {% block content %}
-    <h1>Sign Up</h1>
-    
-    <h2>{{ alert }}</h2>
 
-    <form action="{% url 'sign-up' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-      
-        <button>
-            Enviar
-        </button>
-    
-    </form>
+<div class="row">
+    <div class="col-md-3 offset-md-4">
+            <h1>Sign Up</h1>
+            
+            <h2>{{ alert }}</h2>
+
+            <form action="{% url 'sign-up' %}" method="post">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="usuario">Nombre de Usuario</label>
+                    <input type="text" name="username" id="usuario" placeholder="Usuario">
+
+                    <label for="pass1">Contraseña</label>
+                    <input type="password" name="password1" id="pass1" placeholder="Contraseña">
+
+                    <label for="pass2">Repetir Contraseña</label>
+                    <input type="password" name="password2" id="pass2" placeholder="Contraseña">
+
+                    
+                </div>          
+
+                <button class="btn btn-primary bg-g">
+                    Enviar
+                </button>
+            
+            </form>
+    </div>
+</div>
 
 {% endblock content %}
