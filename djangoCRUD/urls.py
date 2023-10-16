@@ -1,5 +1,4 @@
 
-
 """
 URL configuration for djangoCRUD project.
 
@@ -16,6 +15,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from tasks import views
@@ -23,8 +23,25 @@ from tasks import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', views.home, name='home'),
+
     path('sign-up/', views.sign_up, name='sign-up'),
-    path('notes/', include('notes.urls'), name='notes'),
-    path('tasks/', views.tasks_view, name='tareas_view')
+
+    # path('notes/', include('notes.urls'), name='notes'),
+    path('tasks/', views.tasks_view, name='tareas_view'),
+    path('tasks/create/', views.task_create, name='task_create'),
+
+    path('log-out/', views.salir, name='log-out'),
+
+    path('log-in/', views.ingresar, name='ingresar'),
+
+    path('tasks/<int:task_id>/', views.task_detail, name='task_detail'),
+
+    path('tasks/<int:task_id>/delete/', views.task_deleted, name='task_deleted'),
+
+
+    path('tasks/<int:task_id>/task-completed/', views.task_completed, name='task_completed'),
+    path('tasks/all-tasks/', views.all_tasks, name='all_tasks'),
+
 ]

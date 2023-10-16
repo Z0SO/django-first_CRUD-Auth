@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block content%}
+
+<div class="row">
+  <div class="col-md-3 offset-md-4">
+    <h2 class="text-center">Ingresar</h2>
+
+    <form action="{% url 'ingresar' %}" method="post">
+      {% csrf_token %} {{ alert }}
+
+      <div class="mb-3">
+        <label for="username">Usuario</label>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          placeholder="Usuario"
+          id="username"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="password1">Contraseña</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Contraseña"
+          id="password1"
+        />
+      </div>
+
+      <button class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
+</div>
+
+{% endblock content%}

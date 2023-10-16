@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/zoso/Documentos/Proyectos/django-CRUD-Auth/venv"
+set -gx VIRTUAL_ENV "/home/zoso/Documentos/Proyectos/django-first_CRUD-Auth/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

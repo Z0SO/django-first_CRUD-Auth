@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Detalle de la Tarea</h1>
+
+{{ error }}
+{{ detail.titulo }}
+
+<form method="post">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+
+
+    {% if detail.completada is none %}
+        <form action="{% url 'task_completed' detail.id %}" method="post">
+            {% csrf_token %}
+            <button>Completado</button>
+        </form>
+    {% else %}
+        <h4  style="color: rgb(13, 117, 13);"><i>Tarea Completada</i></h4>
+    {% endif %}
+
+    <button>
+        Actualizar
+    </button>
+
+</form>
+
+
+<form action="{% url 'task_deleted' detail.id %}" method="post">
+    {% csrf_token %}
+    <button>Eliminar</button>
+</form>
+
+{% endblock content %}

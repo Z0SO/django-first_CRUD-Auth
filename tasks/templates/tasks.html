@@ -1,2 +1,54 @@
 <!-- tareas -->
-<h1>Tasks</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Tareas Pendientes de {{ user }}</h1>
+    <p><b>Nota</b>: las letras que estan en <span style="color: crimson;">Rojo</span> son importantes</p>
+    <ul>
+        {% for tarea in tareas %}
+
+            {% if tarea.completada is none %}
+
+                <li>
+                    {% if tarea.es_importante %}
+                        <h4 style="color: crimson;">Titulo tarea {{ tarea.id }}</h4>
+                    {% else %}
+                        <h4>Titulo tarea {{ tarea.id }}</h4>
+                    {% endif %}
+
+                    <p>{{ tarea.titulo }}</p>
+                    
+                    <h5>Descripcion</h5>
+                    <p><i>{{ tarea.descripcion }}</i></p>
+                   
+                    <!-- <h5><b>Usuario</b> <i> {{ tarea.creada_por_id }}</i></h5> -->
+                    
+                    <a href=" {% url 'task_detail' tarea.id %} "><button>Actualizar Datos</button></a>
+                   
+                    <form action="{% url 'task_completed' tarea.id %}" method="post">
+                        {% csrf_token %}
+                        <button>Completado</button>
+                    </form>
+                    
+                    <form action="{% url 'task_deleted' tarea.id %}" method="post">
+                        {% csrf_token %}
+                        <button>Eliminar</button>
+                    </form>
+                    
+
+                </li>
+            
+
+            {% endif %}
+            
+        
+        {% endfor %}
+    </ul>
+
+    <!--     
+    <h2>tareas Object</h2>
+    <p>
+        {{tareas}}
+    </p> -->
+
+{% endblock content %}

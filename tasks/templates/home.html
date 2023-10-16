@@ -1,1 +1,15 @@
-<h1>Home</h1>
+{% extends 'base.html' %} {% block content %}
+
+<h3 class="display-1 text-center">Home</h3>
+{% if user.is_authenticated %}
+<p>Hola {{ user }}</p>
+{% endif %}
+<br />
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda doloribus
+  saepe maxime magni ex, provident nesciunt dolorum, incidunt voluptatibus
+  exercitationem itaque eaque sed fugiat odio quam eligendi perferendis quis.
+  Odio!
+</p>
+
+{% endblock content %}
